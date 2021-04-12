@@ -15,23 +15,24 @@ class Queue {
   constructor() {
     this.oldIndex = 1;
     this.newIndex = 1;
+    this.data = {};
     ListNode();
   }
 
   get size() {
-    return ListNode.length;
+    return this.oldIndex - this.newIndex;
   }
 
   enqueue(element) {
-    ListNode[this.newIndex] = element;
+    this.data[this.newIndex] = element;
     this.newIndex++;
   }
 
   dequeue() {
     let delItem;
     if (this.oldIndex !== this.newIndex) {
-      delItem = ListNode[this.oldIndex];
-      delete ListNode[this.oldIndex];
+      delItem = this.data[this.oldIndex];
+      delete this.data[this.oldIndex];
       this.oldIndex++;
     }
     return delItem;
